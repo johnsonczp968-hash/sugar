@@ -28,7 +28,7 @@ hermes plugins install sugar
 Requires the `sugarai` package in the same Python environment as Hermes:
 
 ```bash
-pip install sugarai==3.10.1
+pip install sugarai==3.10.3
 ```
 
 Then activate it as the memory provider:
