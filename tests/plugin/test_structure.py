@@ -224,6 +224,9 @@ class TestHooksConfiguration:
             "Stop",
             "SubagentStop",
             "UserPromptSubmit",
+            "SessionStart",
+            "SessionEnd",
+            "PreCompact",
         ]
 
         for event_name in hooks_config["hooks"].keys():

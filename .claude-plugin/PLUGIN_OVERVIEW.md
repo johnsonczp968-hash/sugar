@@ -35,7 +35,9 @@ A comprehensive Claude Code plugin infrastructure that transforms Sugar into a f
 │   └── quality-guardian.md              # Quality enforcement specialist
 │
 └── hooks/                               # Intelligent Event Handling
-    └── hooks.json                       # 12 configured hooks
+    ├── hooks.json                       # SessionStart + PostToolUse hooks
+    ├── session_start.py                 # Sugar status on session start
+    └── post_tool_use.py                 # Error/commit workflow suggestions
 ```
 
 ---
@@ -226,7 +228,7 @@ Built for serious development:
 Deepest Claude Code integration:
 - 5 specialized commands
 - 3 custom agents
-- 12 intelligent hooks
+- 3 intelligent hooks (SessionStart + PostToolUse)
 - MCP server bridge
 
 #### 4. Production Quality
@@ -253,7 +255,7 @@ Pioneering new category:
 - ✅ Complete plugin structure
 - ✅ All 5 slash commands defined
 - ✅ All 3 agents created
-- ✅ 12 hooks configured
+- ✅ Hooks configured (SessionStart + PostToolUse)
 - ✅ MCP server specification written
 - ✅ Testing plan comprehensive
 - ✅ Marketplace materials prepared
