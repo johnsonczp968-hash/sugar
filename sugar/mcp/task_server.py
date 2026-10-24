@@ -15,19 +15,32 @@ from typing import Any, Dict, List, Optional
 
 logger = logging.getLogger(__name__)
 
-# Check for FastMCP availability
-try:
-    from mcp.server.fastmcp import FastMCP
+# Check for MCP availability. mcp 2.x renamed FastMCP to MCPServer
+# (from mcp.server.mcpserver import MCPServer); mcp 1.x keeps the old
+# location; the standalone fastmcp package works with both. Trying the 2.x
+# name first keeps `sugar mcp` working on current mcp versions.
+FASTMCP_AVAILABLE = False
+FastMCP = None
+try:  # mcp 2.x
+    from mcp.server import MCPServer as FastMCP
 
     FASTMCP_AVAILABLE = True
 except ImportError:
-    try:
+    pass
+if FastMCP is None:
+    try:  # mcp 1.x
+        from mcp.server.fastmcp import FastMCP
+
+        FASTMCP_AVAILABLE = True
+    except ImportError:
+        pass
+if FastMCP is None:
+    try:  # standalone fastmcp package
         from fastmcp import FastMCP
 
         FASTMCP_AVAILABLE = True
     except ImportError:
-        FASTMCP_AVAILABLE = False
-        FastMCP = None
+        pass
 
 
 def get_work_queue():
